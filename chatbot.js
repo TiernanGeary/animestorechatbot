@@ -135,8 +135,12 @@ function initializeChatbot() {
         document.body.appendChild(container);
     }
 
-    // Create chatbot structure first
+    // Create chatbot structure
     container.innerHTML = `
+        <button id="chatbot-toggle" class="chatbot-toggle">
+            <span class="open-text">💬 チャットボット</span>
+            <span class="close-text">✕</span>
+        </button>
         <div id="chatbot" style="display: none">
             <div class="chatbot-header">
                 <h3>アニメストアFAQ</h3>
@@ -159,36 +163,24 @@ function initializeChatbot() {
         </template>
     `;
 
-    // Add loading indicator
-    const loadingIndicator = document.createElement('div');
-    loadingIndicator.id = 'chatbot-loading';
-    loadingIndicator.innerHTML = '🤖 チャットボットを読み込んでいます...';
-    loadingIndicator.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: white;
-        padding: 15px 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        z-index: 1001;
-        font-family: sans-serif;
-    `;
-    document.body.appendChild(loadingIndicator);
-
     // Initialize chatbot
     console.log('🤖 Anime Store FAQ Chatbot: Initializing chatbot interface');
     const chatbot = new ChatBot();
     
-    // Remove loading indicator and show chatbot after a brief delay
-    setTimeout(() => {
-        loadingIndicator.remove();
-        const chatbotElement = document.getElementById('chatbot');
-        if (chatbotElement) {
-            chatbotElement.style.display = 'block';
-            console.log('🤖 Anime Store FAQ Chatbot: Ready to help!');
+    // Setup toggle button functionality
+    const toggleButton = document.getElementById('chatbot-toggle');
+    const chatbotElement = document.getElementById('chatbot');
+    
+    toggleButton.addEventListener('click', () => {
+        const isVisible = chatbotElement.style.display !== 'none';
+        chatbotElement.style.display = isVisible ? 'none' : 'flex';
+        toggleButton.classList.toggle('active', !isVisible);
+        
+        // If opening the chatbot and no messages yet, show welcome message
+        if (!isVisible && chatbot.messagesContainer.children.length === 0) {
+            chatbot.showWelcomeMessage();
         }
-    }, 1000);
+    });
 }
 
 class ChatBot {
