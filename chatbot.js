@@ -138,7 +138,7 @@ function initializeChatbot() {
     // Create chatbot structure
     container.innerHTML = `
         <button id="chatbot-toggle" class="chatbot-toggle">
-            <span class="open-text">💬 チャットボット</span>
+            <span class="open-text">💬</span>
             <span class="close-text">✕</span>
         </button>
         <div id="chatbot" style="display: none">
