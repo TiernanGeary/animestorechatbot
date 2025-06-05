@@ -386,7 +386,7 @@ class ChatBot {
     buildPath() {
         // Create the path object with the full conversation history
         const path = {
-            timestamp: new Date().toISOString(),
+            timestamp: new Date(new Date().getTime() + (9 * 60 * 60 * 1000)).toISOString(), // Convert to JST
             q1_category: null,
             q2_topic: null,
             q3_subtopic: null,

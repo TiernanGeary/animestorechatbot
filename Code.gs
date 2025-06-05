@@ -22,9 +22,13 @@ function doPost(e) {
       throw new Error("Invalid data format");
     }
 
+    // Create JST timestamp
+    var now = new Date();
+    var jstTime = new Date(now.getTime() + (9 * 60 * 60 * 1000)); // Add 9 hours for JST
+
     // Create row data
     var rowData = [
-      new Date(),           // Timestamp
+      jstTime,             // JST Timestamp
       data.q1 || '',       // Question 1
       data.q2 || '',       // Question 2
       data.q3 || '',       // Question 3
