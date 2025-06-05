@@ -141,25 +141,8 @@ function initializeChatbot() {
         document.body.appendChild(container);
     }
 
-    // Add visual confirmation
-    const loadingIndicator = document.createElement('div');
-    loadingIndicator.id = 'chatbot-loading';
-    loadingIndicator.innerHTML = '🤖 チャットボットを読み込んでいます...';
-    loadingIndicator.style.cssText = `
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: white;
-        padding: 15px 20px;
-        border-radius: 10px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        z-index: 1000;
-        font-family: sans-serif;
-    `;
-    container.appendChild(loadingIndicator);
-
-    // Create chatbot structure
-    container.innerHTML += `
+    // Create chatbot structure first
+    container.innerHTML = `
         <div id="chatbot" style="display: none">
             <div id="chat-messages"></div>
             <div id="chat-options"></div>
@@ -175,6 +158,23 @@ function initializeChatbot() {
         </template>
     `;
 
+    // Add loading indicator
+    const loadingIndicator = document.createElement('div');
+    loadingIndicator.id = 'chatbot-loading';
+    loadingIndicator.innerHTML = '🤖 チャットボットを読み込んでいます...';
+    loadingIndicator.style.cssText = `
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: white;
+        padding: 15px 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1001;
+        font-family: sans-serif;
+    `;
+    document.body.appendChild(loadingIndicator);
+
     // Initialize chatbot
     console.log('🤖 Anime Store FAQ Chatbot: Initializing chatbot interface');
     const chatbot = new ChatBot();
@@ -182,8 +182,11 @@ function initializeChatbot() {
     // Remove loading indicator and show chatbot after a brief delay
     setTimeout(() => {
         loadingIndicator.remove();
-        document.getElementById('chatbot').style.display = 'block';
-        console.log('🤖 Anime Store FAQ Chatbot: Ready to help!');
+        const chatbotElement = document.getElementById('chatbot');
+        if (chatbotElement) {
+            chatbotElement.style.display = 'block';
+            console.log('🤖 Anime Store FAQ Chatbot: Ready to help!');
+        }
     }, 1000);
 }
 
