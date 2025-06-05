@@ -144,6 +144,9 @@ function initializeChatbot() {
     // Create chatbot structure first
     container.innerHTML = `
         <div id="chatbot" style="display: none">
+            <div class="chatbot-header">
+                <h3>アニメストアFAQ</h3>
+            </div>
             <div id="chat-messages"></div>
             <div id="chat-options"></div>
             <button id="restart-button" style="display: none">最初からやり直す</button>
