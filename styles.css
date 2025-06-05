@@ -27,12 +27,32 @@
     color: white;
     padding: 12px 15px;
     border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .chatbot-header h3 {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
+}
+
+#restart-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+#restart-button:hover {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 #chatbot {
@@ -52,12 +72,12 @@
 
 .message {
     margin-bottom: 10px;
-    max-width: 80%;
+    display: flex;
+    flex-direction: column;
 }
 
 .message.user {
-    margin-left: auto;
-    text-align: right;
+    align-items: flex-end;
 }
 
 .message-content {
@@ -65,11 +85,15 @@
     padding: 8px 12px;
     border-radius: 15px;
     background: #f0f0f0;
+    max-width: fit-content;
+    word-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 .message.user .message-content {
     background: #007bff;
     color: white;
+    border-top-right-radius: 4px;
 }
 
 #chat-options {
@@ -92,6 +116,8 @@
     transition: background-color 0.2s;
     text-align: left;
     font-size: 14px;
+    max-width: fit-content;
+    min-width: 200px;
 }
 
 .option:hover {
@@ -106,21 +132,6 @@
 .option.error {
     border-color: #dc3545;
     color: #dc3545;
-}
-
-#restart-button {
-    width: 100%;
-    padding: 8px;
-    background: #6c757d;
-    color: white;
-    border: none;
-    border-radius: 0 0 10px 10px;
-    cursor: pointer;
-    display: none;
-}
-
-#restart-button:hover {
-    background: #5a6268;
 }
 
 .chat-messages {
