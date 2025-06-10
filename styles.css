@@ -1,11 +1,11 @@
 :root {
-    --primary-color: #4A90E2;
+    --primary-color: #FF5DAB;
     --secondary-color: #F5F7FA;
     --text-color: #333333;
     --border-color: #E1E4E8;
     --success-color: #28A745;
     --error-color: #DC3545;
-    --user-message-color: #007AFF;
+    --user-message-color: #FF5DAB;
 }
 
 #chatbot-container {
@@ -20,7 +20,7 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    background: #007bff;
+    background: #FF5DAB;
     color: white;
     border: none;
     border-radius: 50%;
@@ -38,7 +38,7 @@
 
 .chatbot-toggle:hover {
     transform: scale(1.05);
-    background: #0056b3;
+    background: #FF3D9B;
 }
 
 .chatbot-toggle .close-text {
@@ -68,36 +68,38 @@
 }
 
 .chatbot-header {
-    background: #007bff;
+    background: #FF5DAB;
     color: white;
     padding: 12px 15px;
     border-radius: 10px 10px 0 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 50px;
+    box-sizing: border-box;
 }
 
 .chatbot-header h3 {
     margin: 0;
     font-size: 16px;
     font-weight: 600;
+    line-height: 1;
 }
 
 #restart-button {
     background: none;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.5);
     color: white;
     cursor: pointer;
-    padding: 4px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.2s;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 14px;
+    transition: all 0.2s ease;
 }
 
 #restart-button:hover {
     background: rgba(255, 255, 255, 0.2);
+    border-color: white;
 }
 
 #chat-messages {
@@ -111,6 +113,21 @@
     margin-bottom: 10px;
     display: flex;
     flex-direction: column;
+}
+
+.message:not(.user) {
+    position: relative;
+    padding-top: 20px;
+}
+
+.message:not(.user)::before {
+    content: "Anime Store.JP BOT";
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
 }
 
 .message.user {
@@ -128,7 +145,7 @@
 }
 
 .message.user .message-content {
-    background: #007bff;
+    background: #FF5DAB;
     color: white;
     border-top-right-radius: 4px;
 }
@@ -307,4 +324,20 @@
     .message-content {
         max-width: 90%;
     }
+}
+
+.chat-input button {
+    background: #FF5DAB;
+}
+
+.chat-input button:hover {
+    background: #FF3D9B;
+}
+
+.category-button {
+    background: #FF5DAB;
+}
+
+.bot-message .feedback-button {
+    background: #FF5DAB;
 } 

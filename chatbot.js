@@ -144,11 +144,7 @@ function initializeChatbot() {
         <div id="chatbot" style="display: none">
             <div class="chatbot-header">
                 <h3>アニメストアFAQ</h3>
-                <button id="restart-button" style="display: none">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 8c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6v2l4-3-4-3v2c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8h-2z" fill="currentColor"/>
-                    </svg>
-                </button>
+                <button id="restart-button" style="display: none">リセット</button>
             </div>
             <div id="chat-messages"></div>
             <div id="chat-options"></div>
